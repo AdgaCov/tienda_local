@@ -10,7 +10,7 @@ db.init_app(app)
 
 @app.route("/")
 def home():
-    return "<h1>Iniciando tienda</h1>"
+    return "<h1>Iniciando tienda :D</h1>"
 
 if __name__ == "__main__":
     with app.app_context():
