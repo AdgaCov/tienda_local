@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} VENDEDORES | EDIT {% endblock %}
+
+{% block content %}
+<h1>Actualización de vendedor</h1>
+<form action="{{url_for('vendedor.edit', id=vendedor.id)}}" method="POST">
+    <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" value="{{vendedor.nombre}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Contraseña</label>
+        <input type="text" class="form-control" name="contrasenia" value="{{vendedor.contrasenia}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Telefono</label>
+        <input type="number" class="form-control" name="telefono" value="{{vendedor.telefono}}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar vendedor</button>
+</form>
+
+
+{% endblock %}
