@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} PRODUCTO | EDIT {% endblock %}
+
+{% block content %}
+<h1>Actualización de producto</h1>
+<form action="{{url_for('producto.edit', id=producto.id)}}" method="POST">
+    <div class="mb-3">
+        <label for="" class="form-label">Descripción</label>
+        <input type="text" class="form-control" name="descripcion" value="{{producto.descripcion}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Precio</label>
+        <input type="number" class="form-control" name="precio" min="0" step="0.01" value="{{'%.2f'% producto.precio}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Observación</label>
+        <input type="text" class="form-control" name="obs" value="{{producto.obs}}">
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar producto</button>
+</form>
+
+
+{% endblock %}
