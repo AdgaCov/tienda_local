@@ -6,6 +6,9 @@ class Cliente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(80), nullable=False)
     telefono = db.Column(db.String(20), nullable=True)
+    
+    #relacion
+    prestamos = db.relationship('Prestamo', back_populates='cliente')
 
     def __init__(self, nombre, telefono):
         self.nombre = nombre

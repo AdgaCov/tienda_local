@@ -8,6 +8,9 @@ class Producto(db.Model):
     precio = db.Column(db.Float(3,2), nullable=False)
     obs = db.Column(db.String(100), nullable=False)
 
+    #relacion
+    prestamos = db.relationship('Prestamo', back_populates='producto')
+
     def __init__(self, descripcion, precio, obs):
         self.descripcion = descripcion
         self.precio = precio

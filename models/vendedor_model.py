@@ -8,6 +8,9 @@ class Vendedor(db.Model):
     contrasenia = db.Column(db.String(80), nullable = False)
     telefono = db.Column(db.String(20), nullable = False)
 
+    #relacion
+    prestamos = db.relationship('Prestamo', back_populates='vendedor')
+
     def __init__(self, nombre, contrasenia, telefono):
         self.nombre = nombre
         self.contrasenia = contrasenia

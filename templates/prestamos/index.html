@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} PRESTAMO {% endblock %}
+
+{% block content %}
+<h1>Lista de prestamos</h1>
+<a href="{{url_for('prestamo.create')}}" class="btn btn-success mb-3">Nuevo</a>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Producto</th>
+        <th>Vendedor</th>
+        <th>Estado</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for item in prestamos %}
+    <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.cliente.nombre}}</td>
+        <td>{{item.producto.descripcion}}</td>
+        <td>{{item.vendedor.nombre}}</td>
+        <td>{{item.estado}}</td>
+        <td>
+            <a href="{{url_for('prestamo.edit', id=item.id)}}" class="btn btn-warning">Editar</a>
+        </td>
+        <td>
+            <a href="{{url_for('prestamo.delete', id=item.id)}}" class="btn btn-danger">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
