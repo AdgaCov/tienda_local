@@ -1,5 +1,5 @@
 from flask import request, redirect, url_for, Blueprint
-
+from flask_login import login_required
 from models.cliente_model import Cliente
 from models.producto_model import Producto
 from models.vendedor_model import Vendedor
@@ -10,11 +10,13 @@ from views import cliente_view, producto_view, vendedor_view, prestamo_view
 prestamo_bp = Blueprint ('prestamo', __name__, url_prefix="/prestamos")
 
 @prestamo_bp.route("/")
+@login_required
 def index():
     prestamos = Prestamo.get_all()
     return prestamo_view.list(prestamos)
 
 @prestamo_bp.route("/create", methods = ['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         cliente_id = request.form['cliente_id']
@@ -32,6 +34,7 @@ def create():
     return prestamo_view.create(clientes, productos, vendedores)
 
 @prestamo_bp.route("/edit/<int:id>", methods = ['GET', 'POST'])
+@login_required
 def edit(id):
     prestamo = Prestamo.get_by_id(id)
     if request.method == 'POST':
@@ -49,6 +52,7 @@ def edit(id):
     return prestamo_view.edit(prestamo, clientes, productos, vendedores)
     
 @prestamo_bp.route("/delete/<int:id>")
+@login_required
 def delete(id):
     prestamo = Prestamo.get_by_id(id)
     prestamo.delete()
